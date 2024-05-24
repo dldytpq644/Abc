@@ -9,7 +9,7 @@ document.getElementById("submitBtn").addEventListener("click", function() {
 
 async function fetchWeather(city) {
     var apiKey = "2efc837f6c18bc1196c52bb2e9e63b28";
-    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=metric";
+    var url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=metric";
     
     try {
         const response = await fetch(url);
