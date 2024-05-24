@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="weather-container">
-        <h2>날씨 정보</h2>
-        <div>
-            <input type="text" id="location-input" placeholder="지역을 입력하세요">
-            <button onclick="searchWeather()">검색</button>
-        </div>
-        <div id="weather-info">
-            <!-- 날씨 정보가 여기에 표시될 것입니다 -->
+    <div class="wrapper"> <!-- 부모 요소를 감싸는 wrapper 추가 -->
+        <div class="container">
+            <h1>날씨 정보</h1>
+            <div class="form-group">
+                <label for="city">도시:</label>
+                <input type="text" id="city" name="city" placeholder="도시를 입력하세요">
+                <button id="submitBtn">검색</button>
+            </div>
+            <div id="weatherInfo" class="weather-info"></div>
+            <div id="musicInfo" class="music-info"></div>
         </div>
     </div>
     <script src="script.js"></script>
