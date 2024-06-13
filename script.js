@@ -69,11 +69,11 @@ async function recommendAndPlayMusic(weatherDescription) {
 
 function getMusicQuery(weatherDescription) {
     if (weatherDescription.includes("rain")) {
-        return "Korean rainy day music";
+        return "비 오는 날 듣기 좋은 노래";
     } else if (weatherDescription.includes("clear")) {
-        return "Korean sunny day music";
+        return "맑은 날 듣기 좋은 노래";
     } else if (weatherDescription.includes("clouds")) {
-        return "Korean cloudy day music";
+        return "흐린 날 듣기 좋은 노래";
     } else {
         return "Korean weather music";
     }
