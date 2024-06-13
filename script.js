@@ -9,7 +9,7 @@ document.getElementById("submitBtn").addEventListener("click", function() {
 
 async function fetchWeather(city) {
     var apiKey = "2efc837f6c18bc1196c52bb2e9e63b28";
-    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=metric";
+    var url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=metric";
     
     try {
         const response = await fetch(url);
@@ -20,11 +20,13 @@ async function fetchWeather(city) {
         const rain = data.hasOwnProperty('rain') ? data.rain['1h'] : 0;
         const recommendation = recommendClothing(weatherDescription.toLowerCase(), temperature);
         displayWeather(city, weatherDescription, temperature, humidity, rain, recommendation);
-        recommendAndPlayMusic(weatherDescription); // 노래 추천 및 재생 기능 호출
+        recommendAndPlayMusic(weatherDescription); // 음악 추천 함수 호출
+        fetchHoroscope(city); // 운세 함수 호출
     } catch (error) {
-        console.error('Error:', error);
+        console.error('에러:', error);
     }
 }
+
 
 function recommendClothing(weatherDescription, temperature) {
     if (weatherDescription.includes("rain")) {
@@ -111,3 +113,28 @@ function displayMusicInfo(weather, videoData) {
         </div>
     `;
 }
+
+async function fetchHoroscope(city) {
+    // 해당 도시의 운세 데이터를 가져오는 로직을 구현합니다.
+    // 예시:
+    const horoscope = await getHoroscope(city);
+    displayHoroscope(city, horoscope);
+}
+
+async function getHoroscope(city) {
+    // 해당 도시에 맞는 운세 데이터를 가져오는 API 호출을 구현합니다.
+    // 예시:
+    const horoscopeData = await fetchHoroscopeData(city); // 이 함수는 필요에 따라 구현해야 합니다.
+    return horoscopeData;
+}
+
+function displayHoroscope(city, horoscope) {
+    const horoscopeInfo = document.getElementById("horoscopeInfo");
+    horoscopeInfo.innerHTML = `
+        <div class="horoscope-box">
+            <h2>${city}의 오늘 운세</h2>
+            <p>${horoscope}</p>
+        </div>
+    `;
+}
+
